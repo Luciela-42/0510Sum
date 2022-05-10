@@ -14,15 +14,31 @@ int PSum(int* Num, int Cnt)
 	return TotalSum;
 }
 
+void PAlign(int* Num2, int Cnt2)
+{
+	for (int i = 0; i < Cnt2; i++)
+	{
+		for (int j = 0; j < Cnt2 - 1; j++)
+		{
+			if (Num2[j] > Num2[j + 1])
+			{
+				int Temp = Num2[j];
+				Num2[j] = Num2[j + 1];
+				Num2[j + 1] = Temp;
+			}
+		}
+	}
+}
+
 int main()
 {
-	int Count = 10;
+	int Count = 0;
 
 
 	cout << "횟수 입력 : ";
 	cin >> Count;
 
-	if (Count > 10)
+	if (Count > 10) //10회를 넘어서면 종료
 	{
 		return 0;
 	}
@@ -36,6 +52,13 @@ int main()
 	}
 
 	cout << PSum(PtArr, Count) << endl;
+
+	PAlign(PtArr, Count);
+
+	for (int j = 0; j < Count; j++)
+	{
+		cout << PtArr[j] << " ";
+	}
 
 	delete[] PtArr;
 
